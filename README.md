@@ -28,6 +28,7 @@ of the ubuntu derivatives use, I believe) can follow the process I've outlined.
 - An iso, placed in `artifacts/releases/<name>-<version>.iso` (ie. `artifacts/releases/elementaryos-0.3.iso`)
 
 Be sure to setup the required environmental variables in `.env`. You can use `.env.default` as a template.
+Same thing with `terraform/terraform.tfvars`. Ditto `terraform/terraform.tfvars.default`.
 
 When you have everything setup:
 
