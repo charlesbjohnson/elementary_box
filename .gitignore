@@ -3,5 +3,7 @@ artifacts
 
 .vagrant
 
+packer_cache
+
 terraform.tfvars
 terraform.tfstate*
