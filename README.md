@@ -28,3 +28,14 @@ of the ubuntu derivatives use, I believe) can follow the process I've outlined.
 - An iso, placed in `artifacts/releases/<name>-<version>.iso` (ie. `artifacts/releases/elementaryos-0.3.iso`)
 
 Be sure to setup the required environmental variables in `.env`. You can use `.env.default` as a template.
+
+When you have everything setup:
+
+- Run `scripts/execute.sh`
+- Follow the prompts, which will include:
+  - Installing the OS from the install wizard that opens in the virtualbox VM
+  - Powering off the VM
+  - Logging in as `$APP_USER` (probably `vagrant`)
+  - Installing an ssh server on the VM with `sudo apt-get update; sudo apt-get install -y openssh-server`
+  - Powering off the VM again
+- The rest is automated
