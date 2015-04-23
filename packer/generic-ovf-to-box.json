@@ -1,0 +1,45 @@
+{
+  "variables": {
+    "box_version": "{{env `BOX_VERSION`}}",
+    "target": "{{env `TARGET`}}",
+    "user": "{{env `APP_USER`}}",
+    "password": "{{env `APP_PASSWORD`}}",
+    "atlas_token": "{{env `ATLAS_TOKEN`}}"
+  },
+
+  "builders": [{
+      "type": "virtualbox-ovf",
+      "source_path": "./artifacts/exports/{{user `target`}}/{{user `target`}}.ovf",
+      "ssh_username": "{{user `user`}}",
+      "ssh_password": "{{user `password`}}",
+      "ssh_wait_timeout": "30s",
+      "shutdown_command": "echo '{{user `user`}}' | sudo -S shutdown -P now"
+    }],
+
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "echo {{user `password`}} | sudo -S bash -c 'mount /home/{{user `user`}}/VBoxGuestAdditions.iso /mnt'",
+      "echo {{user `password`}} | sudo -S bash -c '/mnt/VBoxLinuxAdditions.run'",
+      "echo {{user `password`}} | sudo -S bash -c 'umount /mnt'",
+      "rm /home/{{user `user`}}/VBoxGuestAdditions.iso"
+    ]
+  }],
+
+  "post-processors": [
+    [
+      {
+        "type": "vagrant",
+        "include": "./artifacts/releases/{{user `target`}}.iso",
+        "output": "./artifacts/boxes/{{user `target`}}.box"
+      },
+
+      {
+        "type": "vagrant-cloud",
+        "access_token": "{{user `atlas_token`}}",
+        "box_tag": "cbjohnson/{{user `target`}}",
+        "version": "{{user `box_version`}}"
+      }
+    ]
+  ]
+}
