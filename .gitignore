@@ -1,0 +1,7 @@
+.env
+artifacts
+
+.vagrant
+
+terraform.tfvars
+terraform.tfstate*
