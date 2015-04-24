@@ -3,8 +3,7 @@
     "box_version": "{{env `BOX_VERSION`}}",
     "target": "{{env `TARGET`}}",
     "user": "{{env `APP_USER`}}",
-    "password": "{{env `APP_PASSWORD`}}",
-    "atlas_token": "{{env `ATLAS_TOKEN`}}"
+    "password": "{{env `APP_PASSWORD`}}"
   },
 
   "builders": [{
@@ -32,13 +31,6 @@
         "type": "vagrant",
         "include": "./artifacts/releases/{{user `target`}}.iso",
         "output": "./artifacts/boxes/{{user `target`}}.box"
-      },
-
-      {
-        "type": "vagrant-cloud",
-        "access_token": "{{user `atlas_token`}}",
-        "box_tag": "cbjohnson/{{user `target`}}",
-        "version": "{{user `box_version`}}"
       }
     ]
   ]

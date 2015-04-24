@@ -21,7 +21,6 @@ of the ubuntu derivatives use, I believe) can follow the process I've outlined.
 ### Services:
 
 - AWS S3 for caching artifacts
-- [Atlas/Vagrant](https://atlas.hashicorp.com) Cloud for hosting vagrant boxes
 
 ### Artifacts:
 
