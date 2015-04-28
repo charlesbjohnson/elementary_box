@@ -29,7 +29,6 @@
     [
       {
         "type": "vagrant",
-        "include": "./artifacts/releases/{{user `target`}}.iso",
         "output": "./artifacts/boxes/{{user `target`}}.box"
       }
     ]
