@@ -7,9 +7,6 @@ if [[ -z "$NAME" || -z "$VERSION" ]]; then
   exit 1
 fi
 
-vagrant up
-vagrant provision
-
 vagrant ssh --command "cd ~/app/terraform; terraform apply -refresh"
 
 vagrant ssh --command "cd ~/app; source ./scripts/synchronize.sh"
