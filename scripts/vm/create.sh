@@ -3,7 +3,7 @@
 VM="$1"
 ISO="$2"
 
-VBoxManage createhd --filename "$VM.vmdk" --size 131072 --format VMDK
+VBoxManage createhd --filename "$VM.vmdk" --size 40960 --format VMDK
 VBoxManage createvm --name "$VM" --register --ostype Ubuntu_64
 VBoxManage storagectl "$VM" --name IDE --add ide
 VBoxManage storageattach "$VM" --storagectl IDE --type dvddrive --port 0 --device 0 --medium "$ISO"
